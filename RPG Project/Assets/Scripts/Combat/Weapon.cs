@@ -64,10 +64,10 @@ namespace RPG.Combat
             return handTransform;
         }
 
-        public void LauchProjectile(Transform rightHand, Transform leftHand, Health target, GameObject instigator)
+        public void LauchProjectile(Transform rightHand, Transform leftHand, Health target, GameObject instigator, float calculatedDamage)
         {
             Projectile projectileInstance = Instantiate(projectile, GetTransform(rightHand, leftHand).position, Quaternion.identity);
-            projectileInstance.SetTarget(target,instigator, _weaponDamage);
+            projectileInstance.SetTarget(target,instigator, calculatedDamage);
             Destroy(projectileInstance.gameObject, _maxLifeTime);
         }
 

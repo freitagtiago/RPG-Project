@@ -45,6 +45,8 @@ MonoBehaviour:
   startingLevel: 1
   characterClass: 0
   progression: {fileID: 11400000, guid: c68c91e0532173d4f8c1e0ca8ed6245d, type: 2}
+  levelUpParticleEffect: {fileID: 3202333727168705569, guid: 1fcb751bdad4a3f40b3471903f41eed9,
+    type: 3}
 --- !u!114 &559173747506904870
 MonoBehaviour:
   m_ObjectHideFlags: 0

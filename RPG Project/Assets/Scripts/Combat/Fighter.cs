@@ -5,7 +5,7 @@ using RPG.Movement;
 using RPG.Core;
 using RPG.Saving;
 using RPG.Resources;
-
+using RPG.Stats;
 
 namespace RPG.Combat
 {
@@ -70,11 +70,12 @@ namespace RPG.Combat
         void Hit()
         {
             if(target == null) { return; }
+            float damage = GetComponent<BaseStats>().GetStat(Stat.Attack);
             if (_currentWeapon.HasProjectile() == true)
             {
-                _currentWeapon.LauchProjectile(_rightHandTransform, _leftHandTransform, target, gameObject);
+                _currentWeapon.LauchProjectile(_rightHandTransform, _leftHandTransform, target, gameObject, damage);
             }
-            target.TakeDamage(this.gameObject, _currentWeapon.GetDamage());
+            target.TakeDamage(this.gameObject, damage);
         }
 
         void Shoot()

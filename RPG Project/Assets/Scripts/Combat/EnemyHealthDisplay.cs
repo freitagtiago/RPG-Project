@@ -27,10 +27,7 @@ namespace Combat
             }
             else
             {
-                if (!enemyHealth.IsDead())
-                {
-                    GetComponent<Text>().text = System.String.Format("{0:0}%", enemyHealth.GetPercentage());
-                } 
+                 GetComponent<Text>().text = System.String.Format("{0:0}/{1:0}", enemyHealth.GetHealthPoints(), enemyHealth.GetMaxHealthPoints());
             }
         }
     }

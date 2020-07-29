@@ -1,4 +1,5 @@
 ﻿using RPG.Resources;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Dynamic;
@@ -13,14 +14,37 @@ namespace RPG.Stats
         [SerializeField] int startingLevel = 1;
         [SerializeField] CharacterClass characterClass;
         [SerializeField] Progression progression = null;
+        [SerializeField] GameObject levelUpParticleEffect = null;
+        Experience experience;
+        int currentLevel = 0;
+        public Action OnLevelUp;
 
-        private void Update()
+        private void Start()
         {
-            if (gameObject.tag == "Player")
+            currentLevel = CalculateLevel();
+            experience = GetComponent<Experience>();
+            if(experience != null)
             {
-                Debug.Log(GetLevel());
+                experience.OnExperienceGained += UpdateLevel;
             }
         }
+
+        private void UpdateLevel()
+        {
+            int newLevel = CalculateLevel();
+            if(newLevel > currentLevel)
+            {
+                LevelUpEffect();
+                OnLevelUp();
+                currentLevel = newLevel;
+            }
+        }
+
+        private void LevelUpEffect()
+        {
+            Instantiate(levelUpParticleEffect, transform);
+        }
+
         public float GetStat(Stat stat)
         {
             return progression.GetStat(stat, characterClass, startingLevel);
@@ -28,7 +52,14 @@ namespace RPG.Stats
 
         public int GetLevel()
         {
-            Experience experience = GetComponent<Experience>();
+            if(currentLevel < 1)
+            {
+                currentLevel = CalculateLevel();
+            }
+            return currentLevel;
+        }
+        public int CalculateLevel()
+        {
 
             if (experience == null) return startingLevel;
 

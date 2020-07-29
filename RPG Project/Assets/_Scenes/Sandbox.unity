@@ -2840,9 +2840,10 @@ PrefabInstance:
     - target: {fileID: 7178371139042324116, guid: 1e529f638b35d664b9de61168f32c37e,
         type: 3}
       propertyPath: startingLevel
-      value: 5
+      value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 7178371139042324116, guid: 1e529f638b35d664b9de61168f32c37e, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 1e529f638b35d664b9de61168f32c37e, type: 3}
 --- !u!114 &1078057842 stripped
 MonoBehaviour:

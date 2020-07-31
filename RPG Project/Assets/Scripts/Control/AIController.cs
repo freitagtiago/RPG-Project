@@ -7,6 +7,7 @@ using RPG.Combat;
 using RPG.Core;
 using RPG.Resources;
 using RPG.Movement;
+using GameDevTV.Utils;
 
 namespace RPG.Control
 {
@@ -18,7 +19,7 @@ namespace RPG.Control
         Health _health;
         Mover _mover;
 
-        Vector3 _guardPosition;
+        LazyValue<Vector3> guardPosition;
         float _timeSinceLastSawPlayer = Mathf.Infinity;
         float _timeSinceArrivedAtWaypoint = Mathf.Infinity;
         float _suspiciousTime = 3f;
@@ -30,15 +31,22 @@ namespace RPG.Control
         [SerializeField] float _speedPatrolFraction = 0.2f;
 
 
-        // Start is called before the first frame update
-        void Start()
+        private void Awake()
         {
             _fighter = GetComponent<Fighter>();
-            _health  = GetComponent<Health>();
-            _mover   = GetComponent<Mover>();
-            _player  = GameObject.FindWithTag("Player");
+            _health = GetComponent<Health>();
+            _mover = GetComponent<Mover>();
+            _player = GameObject.FindWithTag("Player");
+            guardPosition = new LazyValue<Vector3>(GetGuardPosition);
+        }
 
-            _guardPosition = transform.position;
+        private Vector3 GetGuardPosition()
+        {
+            return transform.position;
+        }
+        void Start()
+        {
+            guardPosition.ForceInit();
         }
 
         // Update is called once per frame
@@ -85,7 +93,7 @@ namespace RPG.Control
         }
         private void PatrolBehaviour() 
         {
-            Vector3 nextPosition = _guardPosition;
+            Vector3 nextPosition = guardPosition.value;
 
             if(_patrolPath != null)
             {

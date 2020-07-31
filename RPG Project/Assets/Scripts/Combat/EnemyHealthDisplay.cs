@@ -1,6 +1,7 @@
 ﻿using RPG.Combat;
 using RPG.Resources;
 using RPG.Stats;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -27,7 +28,7 @@ namespace Combat
             }
             else
             {
-                 GetComponent<Text>().text = System.String.Format("{0:0}/{1:0}", enemyHealth.GetHealthPoints(), enemyHealth.GetMaxHealthPoints());
+                 GetComponent<Text>().text = String.Format("{0:0}/{1:0}", enemyHealth.GetHealthPoints(), enemyHealth.GetMaxHealthPoints());
             }
         }
     }

@@ -47,6 +47,7 @@ MonoBehaviour:
   progression: {fileID: 11400000, guid: c68c91e0532173d4f8c1e0ca8ed6245d, type: 2}
   levelUpParticleEffect: {fileID: 3202333727168705569, guid: 1fcb751bdad4a3f40b3471903f41eed9,
     type: 3}
+  shouldUseModifiers: 0
 --- !u!114 &559173747506904870
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -235,6 +236,11 @@ PrefabInstance:
       propertyPath: _rightHandTransform
       value: 
       objectReference: {fileID: 7642149161420299484}
+    - target: {fileID: 2966774509052908568, guid: 11f9b47d6937c5745a580e5921c76bf2,
+        type: 3}
+      propertyPath: shouldUseModifiers
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7400609395400082301, guid: 11f9b47d6937c5745a580e5921c76bf2,
         type: 3}
       propertyPath: m_LocalPosition.x

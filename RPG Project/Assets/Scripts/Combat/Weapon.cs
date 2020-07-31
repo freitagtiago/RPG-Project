@@ -16,6 +16,7 @@ namespace RPG.Combat
         [SerializeField] GameObject _equippedPrefab = null;
         [SerializeField] private float _weaponRange = 2f;
         [SerializeField] private float _weaponDamage = 2f;
+        [SerializeField] private float _percentageBonus = 0;
         [SerializeField] private float _maxLifeTime = 10f;
         [SerializeField] private bool _isRightHanded = true;
         [SerializeField] private Projectile projectile = null;
@@ -63,6 +64,20 @@ namespace RPG.Combat
             else handTransform = _leftHand;
             return handTransform;
         }
+        public float GetDamage()
+        {
+            return _weaponDamage;
+        }
+
+        public float GetRange()
+        {
+            return _weaponRange;
+        }
+
+        public float GetPercentageBonus()
+        {
+            return _percentageBonus;
+        }
 
         public void LauchProjectile(Transform rightHand, Transform leftHand, Health target, GameObject instigator, float calculatedDamage)
         {
@@ -74,16 +89,6 @@ namespace RPG.Combat
         public bool HasProjectile()
         {
             return projectile != null;
-        }
-
-        public float GetDamage()
-        {
-            return _weaponDamage;
-        }
-
-        public float GetRange()
-        {
-            return _weaponRange;
         }
     }
 }

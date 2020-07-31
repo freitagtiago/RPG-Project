@@ -23,6 +23,7 @@ namespace RPG.Saving
             RestoreState(state);
         }
 
+
         public void Save(string saveFile)
         {
             Dictionary<string, object> state = LoadFile(saveFile);

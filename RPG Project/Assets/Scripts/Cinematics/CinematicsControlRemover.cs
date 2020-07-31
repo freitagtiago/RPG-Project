@@ -10,12 +10,21 @@ namespace RPG.Cinematics
     public class CinematicsControlRemover : MonoBehaviour
     {
         GameObject _player;
-        void Start()
+        void Awake()
+        {
+            _player = GameObject.FindWithTag("Player");
+        }
+
+        private void OnEnable()
         {
             GetComponent<PlayableDirector>().played += DisableControl;
             GetComponent<PlayableDirector>().stopped += EnableControl;
-            _player = GameObject.FindWithTag("Player");
+        }
 
+        private void OnDisable()
+        {
+            GetComponent<PlayableDirector>().played -= DisableControl;
+            GetComponent<PlayableDirector>().stopped -= EnableControl;
         }
         void DisableControl(PlayableDirector director)
         {

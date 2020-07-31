@@ -1,4 +1,5 @@
-﻿using RPG.Resources;
+﻿using GameDevTV.Utils;
+using RPG.Resources;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -16,27 +17,46 @@ namespace RPG.Stats
         [SerializeField] Progression progression = null;
         [SerializeField] GameObject levelUpParticleEffect = null;
         Experience experience;
-        int currentLevel = 0;
         public Action OnLevelUp;
+        [SerializeField] bool shouldUseModifiers = false;
+        LazyValue<int> currentLevel;
 
-        private void Start()
+        private void Awake()
         {
-            currentLevel = CalculateLevel();
             experience = GetComponent<Experience>();
-            if(experience != null)
+            currentLevel = new LazyValue<int>(CalculateLevel);
+        }
+
+        private void OnEnable()
+        {
+            if (experience != null)
             {
                 experience.OnExperienceGained += UpdateLevel;
             }
         }
 
+        private void OnDisable()
+        {
+            if (experience != null)
+            {
+                experience.OnExperienceGained -= UpdateLevel;
+            }
+        }
+
+        private void Start()
+        {
+            currentLevel.ForceInit();
+        }
+
         private void UpdateLevel()
         {
             int newLevel = CalculateLevel();
-            if(newLevel > currentLevel)
+            if(newLevel > currentLevel.value)
             {
                 LevelUpEffect();
+                currentLevel.value = newLevel;
                 OnLevelUp();
-                currentLevel = newLevel;
+                
             }
         }
 
@@ -47,17 +67,48 @@ namespace RPG.Stats
 
         public float GetStat(Stat stat)
         {
-            return progression.GetStat(stat, characterClass, startingLevel);
+            return (GetBaseStat(stat) + GetAdditiveModifiers(stat)) * (1 + GetPercentageModifier(stat)/100);
+        }
+
+        private float GetBaseStat(Stat stat)
+        {
+            return progression.GetStat(stat, characterClass, GetLevel());
+        }
+
+        private float GetAdditiveModifiers(Stat stat)
+        {
+            if (!shouldUseModifiers) return 0;
+
+            float additiveDamage = 0;
+            foreach (IModifierProvider provider in GetComponents<IModifierProvider>())
+            {
+                foreach (float additive in provider.GetAdditiveModifiers(stat))
+                {
+                    additiveDamage += additive;
+                }
+            }
+            return additiveDamage;
+        }
+
+        private float GetPercentageModifier(Stat stat)
+        {
+            if (!shouldUseModifiers) return 0;
+            float percentageBonus = 0;
+            foreach (IModifierProvider provider in GetComponents<IModifierProvider>())
+            {
+                foreach (float bonus in provider.GetPercentageModifiers(stat))
+                {
+                    percentageBonus += bonus;
+                }
+            }
+            return percentageBonus;
         }
 
         public int GetLevel()
         {
-            if(currentLevel < 1)
-            {
-                currentLevel = CalculateLevel();
-            }
-            return currentLevel;
+            return currentLevel.value;
         }
+
         public int CalculateLevel()
         {
 

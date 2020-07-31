@@ -16,6 +16,7 @@ MonoBehaviour:
   _equippedPrefab: {fileID: 0}
   _weaponRange: 25
   _weaponDamage: 5
+  _percentageBonus: 5
   _maxLifeTime: 10
   _isRightHanded: 0
   projectile: {fileID: 7711140615901467505, guid: 0192dc6c92e662c4cb4513d871703dcf,

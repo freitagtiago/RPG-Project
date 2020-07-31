@@ -556,7 +556,7 @@ PrefabInstance:
     - target: {fileID: 6642558826982490438, guid: a19572fbcc54a944480913a6ae2be436,
         type: 3}
       propertyPath: startingLevel
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7705042822250455576, guid: a19572fbcc54a944480913a6ae2be436,
         type: 3}
@@ -1897,7 +1897,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 811548588}
-  m_LocalRotation: {x: 0.07012042, y: 0.78284174, z: -0.089737274, w: 0.61171}
+  m_LocalRotation: {x: 0.0701204, y: 0.7828418, z: -0.08973727, w: 0.61171}
   m_LocalPosition: {x: 5.56, y: 7.74, z: 24.71}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -2180,7 +2180,7 @@ PrefabInstance:
     - target: {fileID: 6642558826982490438, guid: a19572fbcc54a944480913a6ae2be436,
         type: 3}
       propertyPath: startingLevel
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7705042822250455576, guid: a19572fbcc54a944480913a6ae2be436,
         type: 3}
@@ -2696,6 +2696,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchoredPosition.x
       value: 26.329956
+      objectReference: {fileID: 0}
+    - target: {fileID: 1521096282576685789, guid: 1e529f638b35d664b9de61168f32c37e,
+        type: 3}
+      propertyPath: shouldUseModifiers
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2714756488476677147, guid: 1e529f638b35d664b9de61168f32c37e,
         type: 3}
@@ -3720,7 +3725,7 @@ PrefabInstance:
     - target: {fileID: 6642558826982490438, guid: a19572fbcc54a944480913a6ae2be436,
         type: 3}
       propertyPath: startingLevel
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7705042822250455576, guid: a19572fbcc54a944480913a6ae2be436,
         type: 3}
@@ -5722,7 +5727,7 @@ PrefabInstance:
     - target: {fileID: 2032257970179218941, guid: 56f723a111ccada41a7bde2fd15a205a,
         type: 3}
       propertyPath: startingLevel
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3095895216125197987, guid: 56f723a111ccada41a7bde2fd15a205a,
         type: 3}
@@ -5883,7 +5888,7 @@ PrefabInstance:
     - target: {fileID: 6642558826982490438, guid: a19572fbcc54a944480913a6ae2be436,
         type: 3}
       propertyPath: startingLevel
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7705042822250455576, guid: a19572fbcc54a944480913a6ae2be436,
         type: 3}

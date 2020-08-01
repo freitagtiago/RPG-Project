@@ -76,6 +76,8 @@ MonoBehaviour:
   - type: 4
     texture: {fileID: 2800000, guid: bd3559211c3a4f64dbdff8af508d1995, type: 3}
     hotspot: {x: 0, y: 0}
+  maxNavMeshProjection: 1
+  maxPathLength: 40
 --- !u!114 &3496691049309055295
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -197,6 +199,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1921176903716703010, guid: 11f9b47d6937c5745a580e5921c76bf2,
+        type: 3}
+      propertyPath: m_Text
+      value: aaaaaaaaa
+      objectReference: {fileID: 0}
     - target: {fileID: 1969609025683569845, guid: 11f9b47d6937c5745a580e5921c76bf2,
         type: 3}
       propertyPath: m_Name
@@ -252,10 +259,30 @@ PrefabInstance:
       propertyPath: _rightHandTransform
       value: 
       objectReference: {fileID: 7642149161420299484}
+    - target: {fileID: 2774146327823548038, guid: 11f9b47d6937c5745a580e5921c76bf2,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2966774509052908568, guid: 11f9b47d6937c5745a580e5921c76bf2,
         type: 3}
       propertyPath: shouldUseModifiers
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3130473092628727555, guid: 11f9b47d6937c5745a580e5921c76bf2,
+        type: 3}
+      propertyPath: m_FontData.m_Alignment
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3160169659029484653, guid: 11f9b47d6937c5745a580e5921c76bf2,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4596325966169635360, guid: 11f9b47d6937c5745a580e5921c76bf2,
+        type: 3}
+      propertyPath: m_Text
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 7400609395400082301, guid: 11f9b47d6937c5745a580e5921c76bf2,
         type: 3}
@@ -317,10 +344,25 @@ PrefabInstance:
       propertyPath: _health
       value: 50
       objectReference: {fileID: 0}
+    - target: {fileID: 7780236582137976345, guid: 11f9b47d6937c5745a580e5921c76bf2,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7780236582137976345, guid: 11f9b47d6937c5745a580e5921c76bf2,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 1.97
+      objectReference: {fileID: 0}
     - target: {fileID: 8860981726118820805, guid: 11f9b47d6937c5745a580e5921c76bf2,
         type: 3}
       propertyPath: uniqueIdentifier
       value: player
+      objectReference: {fileID: 0}
+    - target: {fileID: 9050444777634815116, guid: 11f9b47d6937c5745a580e5921c76bf2,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 2966774509052908568, guid: 11f9b47d6937c5745a580e5921c76bf2, type: 3}

@@ -7,6 +7,7 @@ using RPG.Combat;
 using RPG.Resources;
 using UnityEngine.EventSystems;
 using RPG.Core;
+using UnityEngine.AI;
 
 namespace RPG.Control
 {
@@ -25,6 +26,8 @@ namespace RPG.Control
 
 
         [SerializeField] CursorMapping[] cursorMappings = null;
+        [SerializeField] float maxNavMeshProjection = 1f;
+        [SerializeField] float maxPathLength = 40f;
 
         // Start is called before the first frame update
         void Awake()
@@ -77,13 +80,14 @@ namespace RPG.Control
 
         private bool InteractWithMovement()
         {
-            RaycastHit hit;
-            bool hasHit = Physics.Raycast(GetMouseRay(), out hit);
+
+            Vector3 target;
+            bool hasHit = RaycastNavMesh(out target);
             if (hasHit)
             {
                 if (Input.GetMouseButton(0))
                 {
-                    GetComponent<Mover>().StartMoveAction(hit.point, 1f);
+                    GetComponent<Mover>().StartMoveAction(target, 1f);
                 }
                 SetCursor(CursorType.Movement);
                 return true; 
@@ -91,6 +95,29 @@ namespace RPG.Control
             return false;
         }
 
+        private bool RaycastNavMesh(out Vector3 target)
+        {
+            target = new Vector3();
+            RaycastHit hit;
+            bool hasHit = Physics.Raycast(GetMouseRay(), out hit);
+
+            if (!hasHit) return false;
+            NavMeshHit navMeshHit;
+            if (!NavMesh.SamplePosition(hit.point, out navMeshHit, maxNavMeshProjection, NavMesh.AllAreas))
+            {
+                return false;
+            }
+
+            target = navMeshHit.position;
+
+            NavMeshPath path = new NavMeshPath();
+            bool hasPath = NavMesh.CalculatePath(transform.position, target, NavMesh.AllAreas, path);
+            if (!hasPath) return false;
+            if (path.status != NavMeshPathStatus.PathComplete) return false;
+            if (GetPathLength(path) > maxPathLength) return false;
+
+            return true;
+        }
         RaycastHit[] RayCastAllSorted()
         {
             RaycastHit[] hits = Physics.RaycastAll(GetMouseRay());
@@ -125,6 +152,17 @@ namespace RPG.Control
         private static Ray GetMouseRay()
         {
             return Camera.main.ScreenPointToRay(Input.mousePosition);
+        }
+
+        private float GetPathLength(NavMeshPath path)
+        {
+            float total = 0;
+            if (path.corners.Length < 2) return 0;
+            for (int i = 0; i < path.corners.Length - 1; i++)
+            {
+                total += Vector3.Distance(path.corners[i], path.corners[i+1]);
+            }
+            return total;
         }
     }
 }

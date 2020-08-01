@@ -7,6 +7,7 @@ using RPG.Core;
 using RPG.Stats;
 using GameDevTV.Utils;
 using System;
+using UnityEngine.Events;
 
 namespace RPG.Resources
 {
@@ -15,7 +16,13 @@ namespace RPG.Resources
        LazyValue<float> health;
        [SerializeField] private bool _isDead = false;
        [SerializeField] private float regeneratePercentage = 75f;
+       [SerializeField] private TakeDamageEvent takeDamage;
 
+        [System.Serializable]
+        public class TakeDamageEvent : UnityEvent<float>
+        {
+ 
+        }
         private void Awake()
         {
             health = new LazyValue<float>(GetInitialHealth);
@@ -78,13 +85,15 @@ namespace RPG.Resources
             bool isDead = false;
 
             Debug.Log(gameObject.name + " took damage of " + damage);
-
+            
             health.value = Mathf.Max(health.value - damage,0);
+            takeDamage.Invoke(damage);
             if (health.value == 0 && _isDead == false)
             {
                 Die();
                 AwardExperience(instigator);
             }
+
         }
 
         private void AwardExperience(GameObject instigator)

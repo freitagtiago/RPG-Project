@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using RPG.Core;
 using RPG.Attributes;
+using UnityEngine.Events;
 
 namespace RPG.Combat
 {
@@ -18,9 +19,12 @@ namespace RPG.Combat
         [SerializeField] float _damagePlus = 0;
         [SerializeField] bool _canHoming = false;
         GameObject instigator = null;
+        [SerializeField] private UnityEvent onLauch;
+        [SerializeField] private AudioClip _hitSound;
 
         private void Start()
         {
+            onLauch.Invoke();
             transform.LookAt(GetAimLocation());
         }
 
@@ -58,12 +62,19 @@ namespace RPG.Combat
             Debug.Log(other.name);
             if (other.GetComponent<Health>() != _target) return;
             if (_target.IsDead() == true) return;
-            if(_hitEffect != null)
+            _target.TakeDamage(instigator, _damage);
+
+            if (_hitSound != null)
+            {
+                AudioSource.PlayClipAtPoint(_hitSound, _target.transform.position);
+            }
+
+            if (_hitEffect != null)
             {
                 GameObject effect = Instantiate(_hitEffect, GetAimLocation(), other.transform.rotation);
                 Destroy(effect.gameObject, _lifeAfterImpact);
             }
-            _target.TakeDamage(instigator, _damage);
+            
             Destroy(this.gameObject);
         }
     }

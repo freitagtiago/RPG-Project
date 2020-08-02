@@ -22,7 +22,6 @@ namespace RPG.SceneManagement
         {
             while (canvasGroup.alpha < 1)
             {
-                Debug.Log("FADE OUT");
                 canvasGroup.alpha += Time.deltaTime / time;
                 yield return null;
             }
@@ -32,7 +31,6 @@ namespace RPG.SceneManagement
         {
             while (canvasGroup.alpha > 0)
             {
-                Debug.Log("FADE IN");
                 canvasGroup.alpha -= Time.deltaTime / time;
                 yield return null;
             }

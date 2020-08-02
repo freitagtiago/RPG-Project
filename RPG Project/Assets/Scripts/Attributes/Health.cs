@@ -9,7 +9,7 @@ using GameDevTV.Utils;
 using System;
 using UnityEngine.Events;
 
-namespace RPG.Resources
+namespace RPG.Attributes
 {
     public class Health : MonoBehaviour, ISaveable
     {
@@ -59,9 +59,13 @@ namespace RPG.Resources
             {
                 Debug.Log("Current Health: " + health.value);
             }
-            return 100 * (health.value / GetComponent<BaseStats>().GetStat(Stat.Health));
+            return 100 * GetFraction();
         }
 
+        public float GetFraction()
+        {
+            return health.value / GetComponent<BaseStats>().GetStat(Stat.Health);
+        }
         public float GetHealthPoints()
         {
             return health.value;

@@ -1,10 +1,9 @@
-﻿using RPG.Resources;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Resources
+namespace RPG.Attributes
 {
     public class HealthDisplay : MonoBehaviour
     {

@@ -6,7 +6,7 @@ using UnityEngine.AI;
 using UnityEngine.SocialPlatforms;
 using RPG.Core;
 using RPG.Saving;
-using RPG.Resources;
+using RPG.Attributes;
 
 namespace RPG.Movement
 {

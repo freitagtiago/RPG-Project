@@ -1230,6 +1230,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 400550}
+  - component: {fileID: 2664145903822084024}
   m_Layer: 0
   m_Name: OldHousePrefab
   m_TagString: Untagged
@@ -1270,6 +1271,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &2664145903822084024
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 188958}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 6.118479, y: 6.6677904, z: 9.207403}
+  m_Center: {x: -0.006814003, y: 2.8338952, z: -4.430604}
 --- !u!1 &190744
 GameObject:
   m_ObjectHideFlags: 0

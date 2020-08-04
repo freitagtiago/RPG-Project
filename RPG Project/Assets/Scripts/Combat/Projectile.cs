@@ -59,7 +59,16 @@ namespace RPG.Combat
 
         private void OnTriggerEnter(Collider other)
         {
-            Debug.Log(other.name);
+            Debug.Log(other.tag);
+            if (other.tag == "Obstacle")
+            {
+                if (_hitSound != null)
+                {
+                    AudioSource.PlayClipAtPoint(_hitSound, _target.transform.position);
+                }
+                Destroy(this.gameObject);
+            }
+
             if (other.GetComponent<Health>() != _target) return;
             if (_target.IsDead() == true) return;
             _target.TakeDamage(instigator, _damage);

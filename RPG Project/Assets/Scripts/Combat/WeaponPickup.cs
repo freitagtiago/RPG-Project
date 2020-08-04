@@ -1,4 +1,5 @@
-﻿using RPG.Control;
+﻿using RPG.Attributes;
+using RPG.Control;
 using RPG.Core;
 using System;
 using System.Collections;
@@ -9,19 +10,27 @@ namespace RPG.Combat
 {
     public class WeaponPickup : MonoBehaviour, IRaycastable
     {
-        [SerializeField] Weapon _weapon;
+        [SerializeField] WeaponConfig _weapon;
+        [SerializeField] float _healthToRestore = 0f;
         [SerializeField] float _respawnTime = 5f;
         private void OnTriggerEnter(Collider other)
         {
             if (other.tag == "Player")
             {
-                Pickup(other.GetComponent<Fighter>());
+                Pickup(other.gameObject);
             }
         }
 
-        private void Pickup(Fighter fighter)
+        private void Pickup(GameObject subject)
         {
-            fighter.EquipWeapon(_weapon);
+            if(_weapon != null)
+            {
+                subject.GetComponent<Fighter>().EquipWeapon(_weapon);
+            }
+            if(_healthToRestore > 0)
+            {
+                subject.GetComponent<Health>().Heal(_healthToRestore);
+            }
             StartCoroutine(HideForSeconds(_respawnTime));
         }
 
@@ -45,7 +54,7 @@ namespace RPG.Combat
         {
             if (Input.GetMouseButtonDown(0))
             {
-                Pickup(callingController.GetComponent<Fighter>());
+                Pickup(callingController.gameObject);
             }
             return true;
         }

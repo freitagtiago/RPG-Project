@@ -13,6 +13,7 @@ namespace RPG.Movement
     public class Mover : MonoBehaviour, IAction, ISaveable
     {
         [SerializeField] float _maxSpeed = 5.46f;
+        [SerializeField] float maxPathLength = 40f;
         private NavMeshAgent _naveMeshAgent;
         Health _health;
         // Start is called before the first frame update
@@ -28,6 +29,27 @@ namespace RPG.Movement
             _naveMeshAgent.enabled = !_health.IsDead();
             UpdateAnimator();
         }
+
+        private void UpdateAnimator()
+        {
+            Vector3 velocity = _naveMeshAgent.velocity;
+            Vector3 localVelocity = transform.InverseTransformDirection(velocity);
+            float speed = localVelocity.z;
+            GetComponent<Animator>().SetFloat("forwardSpeed", speed);
+        }
+
+        private float GetPathLength(NavMeshPath path)
+        {
+            float total = 0;
+            if (path.corners.Length < 2) return 0;
+            for (int i = 0; i < path.corners.Length - 1; i++)
+            {
+                total += Vector3.Distance(path.corners[i], path.corners[i + 1]);
+            }
+            return total;
+        }
+
+        #region Public Methods
         public void StartMoveAction(Vector3 destination, float speedFraction)
         {
             GetComponent<ActionScheduler>().StartAction(this);
@@ -46,12 +68,14 @@ namespace RPG.Movement
             _naveMeshAgent.isStopped = true;
         }
 
-        private void UpdateAnimator()
+        public bool CanMoveTo(Vector3 target)
         {
-            Vector3 velocity = _naveMeshAgent.velocity;
-            Vector3 localVelocity = transform.InverseTransformDirection(velocity);
-            float speed = localVelocity.z;
-            GetComponent<Animator>().SetFloat("forwardSpeed", speed);
+            NavMeshPath path = new NavMeshPath();
+            bool hasPath = NavMesh.CalculatePath(transform.position, target, NavMesh.AllAreas, path);
+            if (!hasPath) return false;
+            if (path.status != NavMeshPathStatus.PathComplete) return false;
+            if (GetPathLength(path) > maxPathLength) return false;
+            return true;
         }
 
         public object CaptureState()
@@ -71,6 +95,7 @@ namespace RPG.Movement
             transform.eulerAngles = ((SerializableVector3)data["rotation"]).ToVector();
             _naveMeshAgent.enabled = true;
         }
+        #endregion
     }
 }
 

@@ -11,9 +11,10 @@ GameObject:
   - component: {fileID: 1680949932821191798}
   - component: {fileID: 34132070745978782}
   - component: {fileID: 4717738670950485682}
-  - component: {fileID: 5642874852726735601}
+  - component: {fileID: -2882726795114323704}
+  - component: {fileID: -3666079055559831153}
   m_Layer: 0
-  m_Name: Root Pickup
+  m_Name: Root Weapon Pickup
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -62,7 +63,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &5642874852726735601
+--- !u!114 &-2882726795114323704
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -71,7 +72,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 5871149236192764812}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2163677e55c5d9249bf336c5fb9855e5, type: 3}
+  m_Script: {fileID: 11500000, guid: 91f208ba0dbe65d478b628ca24b59c42, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _weapon: {fileID: 11400000, guid: 71daf9d483daf2f46b73f298623d7066, type: 2}
+--- !u!114 &-3666079055559831153
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5871149236192764812}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 163140668fc139a4c9c17201d805fde2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

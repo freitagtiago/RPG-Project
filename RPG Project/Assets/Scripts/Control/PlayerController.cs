@@ -24,7 +24,7 @@ namespace RPG.Control
             public Texture2D texture;
             public Vector2 hotspot;
         }
-
+        bool isDraggingUi = false;
 
         [SerializeField] CursorMapping[] cursorMappings = null;
         [SerializeField] float maxNavMeshProjection = 1f;
@@ -71,9 +71,22 @@ namespace RPG.Control
 
         private bool InteractWithUI()
         {
+            if(Input.GetMouseButtonUp(0))
+                {
+                    isDraggingUi = false;
+                }
             if (EventSystem.current.IsPointerOverGameObject())
             { 
+                if(Input.GetMouseButtonDown(0))
+                {
+                    isDraggingUi = true;
+                }
+                
                 SetCursor(CursorType.UI);
+                return true;
+            }
+            if(isDraggingUi == true)
+            {
                 return true;
             }
             return  false;

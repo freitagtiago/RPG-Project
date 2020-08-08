@@ -12,6 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7979341d5f1e8024b8a0a6ac2f80abb4, type: 3}
   m_Name: Bow
   m_EditorClassIdentifier: 
+  itemID: 09b6c3d6-bce0-4279-8244-923c3a802422
+  displayName: Bow
+  description: This is a Bow
+  icon: {fileID: 21300000, guid: b81ba68e50e78424a98853aed32330ee, type: 3}
+  pickup: {fileID: 1669547176524099019, guid: 0684dc590fd254c4f9ac76c27a1366c4, type: 3}
+  stackable: 0
+  allowedEquipLocation: 5
   _animatorOverride: {fileID: 22100000, guid: 1df553d50526fbe4a8fed4baa94bb7e2, type: 2}
   _equippedPrefab: {fileID: -7296481804615767771, guid: bf24d3c29d451a34d8aa66ff8f0a8048,
     type: 3}

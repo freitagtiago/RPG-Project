@@ -77,7 +77,30 @@ MonoBehaviour:
     texture: {fileID: 2800000, guid: bd3559211c3a4f64dbdff8af508d1995, type: 3}
     hotspot: {x: 0, y: 0}
   maxNavMeshProjection: 1
-  maxPathLength: 40
+--- !u!114 &1098998171967502182
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8379826080091672966}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a19ff972ec6859b48870488d7b1e81b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2754219919133864418
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8379826080091672966}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: beb7dea4908d1a94783430bfe43b45b2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &3496691049309055295
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -91,6 +114,32 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _experiencePoints: 0
+--- !u!114 &3987853363507080604
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8379826080091672966}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19fc28a888c18ce4a82d521912c49df1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inventorySize: 16
+--- !u!114 &799990464128108246
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8379826080091672966}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41b222d7135a9cc46bfabccd7d2d9871, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scatterDistance: 2
 --- !u!1001 &7642149161420625240
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -202,7 +251,7 @@ PrefabInstance:
     - target: {fileID: 1691323730052994065, guid: 11f9b47d6937c5745a580e5921c76bf2,
         type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1691323730052994065, guid: 11f9b47d6937c5745a580e5921c76bf2,
         type: 3}

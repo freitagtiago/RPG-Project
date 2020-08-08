@@ -1,16 +1,17 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using RPG.Movement;
 using RPG.Core;
-using RPG.Saving;
+using GameDevTV.Saving;
 using RPG.Attributes;
 using RPG.Stats;
+using System.Collections.Generic;
 using GameDevTV.Utils;
+using System;
+using GameDevTV.Inventories;
 
 namespace RPG.Combat
 {
-    public class Fighter : MonoBehaviour, IAction, ISaveable, IModifierProvider
+    public class Fighter : MonoBehaviour, IAction, ISaveable
     {
         Health target;
 
@@ -23,11 +24,17 @@ namespace RPG.Combat
         [SerializeField] string _defaultWeaponName = "Unarmed";
         WeaponConfig currentWeaponConfig;
         LazyValue<Weapon> currentWeapon;
-         
+        Equipment equipment;
+    
         private void Awake()
         {
             currentWeaponConfig = _defaultWeapon;
             currentWeapon = new LazyValue<Weapon>(SetDefaultWeapon);
+            equipment = GetComponent<Equipment>();
+            if (equipment)
+            {
+                equipment.equipmentUpdated += UpdateWeapon;
+            }
     
         }
 
@@ -145,21 +152,6 @@ namespace RPG.Combat
             GetComponent<Animator>().SetTrigger("stoppingAttack");
         }
 
-        public IEnumerable<float> GetAdditiveModifiers(Stat stat)
-        {
-            if(stat == Stat.Attack)
-            {
-                yield return currentWeaponConfig.GetDamage();
-            }
-        }
-        public IEnumerable<float> GetPercentageModifiers(Stat stat)
-        {
-            if (stat == Stat.Attack)
-            {
-                yield return currentWeaponConfig.GetPercentageBonus();
-            }
-        }
-
         private Weapon AttachWeapon(WeaponConfig weapon)
         {
             Animator anim = GetComponent<Animator>();
@@ -169,6 +161,19 @@ namespace RPG.Combat
         {
             currentWeaponConfig = weapon;
             currentWeapon.value = AttachWeapon(weapon);
+        }
+
+        private void UpdateWeapon()
+        {
+            var weapon = equipment.GetItemInSlot(EquipLocation.Weapon) as WeaponConfig;
+            if (weapon == null)
+            {
+                EquipWeapon(_defaultWeapon);
+            }
+            else
+            {
+                EquipWeapon(weapon);
+            }
         }
 
         public object CaptureState()

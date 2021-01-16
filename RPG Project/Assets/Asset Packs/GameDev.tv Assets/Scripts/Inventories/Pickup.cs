@@ -52,6 +52,9 @@ namespace GameDevTV.Inventories
 
         public void PickupItem()
         {
+            Debug.Log(item.GetDisplayName());
+            if (item ==  null) return;
+
             bool foundSlot = inventory.AddToFirstEmptySlot(item, number);
             if (foundSlot)
             {

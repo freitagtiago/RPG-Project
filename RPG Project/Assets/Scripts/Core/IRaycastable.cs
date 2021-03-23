@@ -1,6 +1,6 @@
-﻿using RPG.Control;
+﻿//using RPG.Control;
 
-namespace RPG.Core
+namespace RPG.Control
 {
     public interface IRaycastable
     {

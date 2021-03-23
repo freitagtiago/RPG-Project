@@ -19,6 +19,8 @@ namespace RPG.Movement
         // Start is called before the first frame update
         private void Awake()
         {
+            
+            
             _naveMeshAgent = GetComponent<NavMeshAgent>();
             _health = GetComponent<Health>();
         }
@@ -26,6 +28,11 @@ namespace RPG.Movement
         // Update is called once per frame
         void Update()
         {
+            if (name == "Enemy (3)")
+            {
+                Debug.Log(name + " " + transform.position);
+            }
+
             _naveMeshAgent.enabled = !_health.IsDead();
             UpdateAnimator();
         }

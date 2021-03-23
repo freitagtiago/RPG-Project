@@ -82,7 +82,7 @@ namespace RPG.Control
 
         public void Aggrevate()
         {
-            Debug.Log("aggrevated");
+            Debug.Log(name + "aggrevated");
             _timeSinceAggrevated = 0;
         }
 
@@ -118,7 +118,9 @@ namespace RPG.Control
             return distanceToPlayer <= _chaseDistance || _timeSinceAggrevated <_agroCoolDownTime;
         }
         private void PatrolBehaviour() 
-        {
+        { 
+            if(_patrolPath == null){ return; }
+
             Vector3 nextPosition = guardPosition.value;
 
             if(_patrolPath != null)

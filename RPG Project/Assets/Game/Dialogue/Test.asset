@@ -1,0 +1,140 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-8077025449955624841
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca53f4b052df5ab45b3ce8b9b631c147, type: 3}
+  m_Name: 13b5a381-4cfb-4d94-a350-4c147325bc65
+  m_EditorClassIdentifier: 
+  isPlayerSpeaking: 0
+  dialogueText: VIsh
+  children: []
+  rect:
+    serializedVersion: 2
+    x: 540
+    y: 336
+    width: 200
+    height: 100
+  onEnterAction: 
+  onExitAction: Attack
+--- !u!114 &-4817830585584412426
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca53f4b052df5ab45b3ce8b9b631c147, type: 3}
+  m_Name: a22f86b1-3cef-415c-b8f7-a47994153ab7
+  m_EditorClassIdentifier: 
+  isPlayerSpeaking: 0
+  dialogueText: Bom dia, tudo bem?
+  children:
+  - a95c3398-23d2-4ecd-baa6-c3f213181662
+  - 145009bc-a31c-4a90-a7d3-c1f8f67746c4
+  rect:
+    serializedVersion: 2
+    x: 44
+    y: 226
+    width: 200
+    height: 100
+  onEnterAction: Test
+  onExitAction: 
+--- !u!114 &-2853432342982737271
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca53f4b052df5ab45b3ce8b9b631c147, type: 3}
+  m_Name: 16d6d6a9-5d87-4e78-9bc8-6df67774550d
+  m_EditorClassIdentifier: 
+  isPlayerSpeaking: 0
+  dialogueText: Que legal, tchau!
+  children: []
+  rect:
+    serializedVersion: 2
+    x: 550
+    y: 113
+    width: 200
+    height: 100
+  onEnterAction: 
+  onExitAction: 
+--- !u!114 &-1557342633835815327
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca53f4b052df5ab45b3ce8b9b631c147, type: 3}
+  m_Name: a95c3398-23d2-4ecd-baa6-c3f213181662
+  m_EditorClassIdentifier: 
+  isPlayerSpeaking: 1
+  dialogueText: "Tudo e com voc\xEA?"
+  children:
+  - 16d6d6a9-5d87-4e78-9bc8-6df67774550d
+  rect:
+    serializedVersion: 2
+    x: 294
+    y: 109
+    width: 200
+    height: 100
+  onEnterAction: testselection
+  onExitAction: 
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7625dbdf709f99c448e3b71458fddef9, type: 3}
+  m_Name: Test
+  m_EditorClassIdentifier: 
+  nodes:
+  - {fileID: -4817830585584412426}
+  - {fileID: -1557342633835815327}
+  - {fileID: 7787232317569259009}
+  - {fileID: -2853432342982737271}
+  - {fileID: -8077025449955624841}
+  newNodeOffset: {x: 250, y: 0}
+--- !u!114 &7787232317569259009
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca53f4b052df5ab45b3ce8b9b631c147, type: 3}
+  m_Name: 145009bc-a31c-4a90-a7d3-c1f8f67746c4
+  m_EditorClassIdentifier: 
+  isPlayerSpeaking: 1
+  dialogueText: "N\xE3o"
+  children:
+  - 13b5a381-4cfb-4d94-a350-4c147325bc65
+  rect:
+    serializedVersion: 2
+    x: 288
+    y: 336
+    width: 200
+    height: 100
+  onEnterAction: 
+  onExitAction: 
